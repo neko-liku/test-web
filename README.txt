@@ -29,3 +29,13 @@
 - お問い合わせフォームURL
 - 実際の里親募集状況
 - 必要に応じたFAQ文言
+
+
+追加したもの
+- トップページに Facebook セクションを追加
+- Instagram への導線を追加
+- contact.html に SNS リンクを追加
+
+補足
+- Facebook は iframe 埋め込みを追加
+- Instagram は仕様変更の影響を受けやすいため、この版ではリンク中心
