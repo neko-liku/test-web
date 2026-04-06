@@ -1,0 +1,18 @@
+請複製下面這一整段，貼到 data/cats.js 裡最後一筆後面，再把內容改掉：
+
+{
+  name: "新貓咪名字",
+  gender: "女生",
+  age: "2 歲",
+  personality: ["親人"],
+  badge: "可預約見面",
+  tags: ["親人"],
+  description: "請把這裡改成這隻貓的簡短介紹。",
+  image: "images/cat05.jpg",
+  status: "開放領養"
+}
+
+提醒：
+1. 如果不是最後一筆，後面要加逗號 ,
+2. image 要對應 images/ 資料夾裡真的有的檔名
+3. personality 可填：親人 / 活潑 / 穩定 / 新手友善

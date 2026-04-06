@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900">
+    <rect width="100%" height="100%" fill="#fbe7dc"/>
+    <circle cx="600" cy="420" r="180" fill="#f6c6b6"/>
+    <circle cx="510" cy="290" r="55" fill="#f0b49f"/>
+    <circle cx="690" cy="290" r="55" fill="#f0b49f"/>
+    <circle cx="540" cy="400" r="18" fill="#4b3d36"/>
+    <circle cx="660" cy="400" r="18" fill="#4b3d36"/>
+    <polygon points="600,430 575,465 625,465" fill="#e8816f"/>
+    <text x="600" y="720" font-size="54" text-anchor="middle" fill="#7a685e" font-family="Arial">Hero Cat Placeholder</text>
+    </svg>

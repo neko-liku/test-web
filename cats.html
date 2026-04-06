@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>里親募集中｜ねこのようちえん</title>
+<link rel="stylesheet" href="styles.css" /></head><body>
+
+<header class="topbar">
+  <div class="container nav">
+    <a href="index.html" class="brand" aria-label="トップへ">
+      <span class="brand-mark">🐾</span>
+      <span>ねこのようちえん</span>
+    </a>
+    <nav class="nav-links" id="mobileMenu">
+      <a href="index.html">トップ</a>
+      <a href="profile.html">プロフィール</a>
+      <a href="guide.html">ご利用案内</a>
+      <a href="cats.html">里親募集中</a>
+      <a href="contact.html">ご予約 / お問い合わせ</a>
+      <a href="faq.html">よくある質問</a>
+      <a href="admin.html">里親情報更新</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-primary" href="contact.html">お問い合わせ</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="開閉メニュー">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+    <div class="page-header">
+      <div class="eyebrow">里親募集中にゃん♪</div>
+      <h1 class="section-title">里親募集中</h1>
+      <p class="section-desc">旧サイトの「里親募集中」ページを、スマホでも見やすく、更新しやすい形に再構成しています。</p>
+    </div>
+    <section class="guide-box">
+      <h2>更新方法</h2>
+      <p>このページの一覧は <code>admin.html</code> から追加・編集できます。猫さんの写真、名前、紹介文を更新すると、この一覧に自動で反映されます。</p>
+    </section>
+    <section class="filters">
+      <button class="filter-btn active" data-filter="all">すべて</button>
+      <button class="filter-btn" data-filter="甘えんぼ">甘えんぼ</button>
+      <button class="filter-btn" data-filter="元気">元気</button>
+      <button class="filter-btn" data-filter="穏やか">穏やか</button>
+      <button class="filter-btn" data-filter="新生活募集中">新生活募集中</button>
+    </section>
+    <section id="catsGrid" class="cat-grid"></section>
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-wrap">
+    <div>© 2026 ねこのようちえん</div>
+    <div class="footer-links">
+      <a href="cats.html">里親募集中</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="admin.html">里親情報更新</a>
+    </div>
+  </div>
+</footer>
+
+<script src="data/cats.js"></script>
+<script src="script.js"></script>
+</body></html>

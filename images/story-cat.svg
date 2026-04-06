@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900">
+    <rect width="100%" height="100%" fill="#fff0e7"/>
+    <rect x="180" y="180" width="840" height="500" rx="40" fill="#ffd9c8"/>
+    <text x="600" y="470" font-size="58" text-anchor="middle" fill="#7a685e" font-family="Arial">Story Image Placeholder</text>
+    </svg>

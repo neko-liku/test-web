@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>里親情報更新｜ねこのようちえん</title>
+<link rel="stylesheet" href="styles.css" /></head><body>
+
+<header class="topbar">
+  <div class="container nav">
+    <a href="index.html" class="brand" aria-label="トップへ">
+      <span class="brand-mark">🐾</span>
+      <span>ねこのようちえん</span>
+    </a>
+    <nav class="nav-links" id="mobileMenu">
+      <a href="index.html">トップ</a>
+      <a href="profile.html">プロフィール</a>
+      <a href="guide.html">ご利用案内</a>
+      <a href="cats.html">里親募集中</a>
+      <a href="contact.html">ご予約 / お問い合わせ</a>
+      <a href="faq.html">よくある質問</a>
+      <a href="admin.html">里親情報更新</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-primary" href="contact.html">お問い合わせ</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="開閉メニュー">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+    <div class="page-header">
+      <div class="eyebrow">かんたん更新ページ</div>
+      <h1 class="section-title">里親情報更新</h1>
+      <p class="section-desc">猫さんの一覧を、HTMLを直接触らずに更新できる簡易管理ページです。</p>
+    </div>
+    <section class="guide-box">
+      <h2>使い方</h2>
+      <ol>
+        <li>新しい猫さんを追加する、または既存の情報を修正する</li>
+        <li>「この端末に保存」を押す</li>
+        <li><code>cats.html</code> で表示を確認する</li>
+        <li>必要なら「JSONを書き出す」でバックアップする</li>
+      </ol>
+      <p class="small-note">※ この管理ページはブラウザ保存型です。別のPCには自動同期されません。</p>
+    </section>
+
+    <div class="admin-layout">
+      <section class="admin-panel">
+        <div class="admin-toolbar">
+          <button class="btn btn-primary" id="newCatBtn" type="button">＋ 新しい猫さんを追加</button>
+          <button class="btn btn-soft" id="saveLocalBtn" type="button">この端末に保存</button>
+          <button class="btn btn-soft" id="exportBtn" type="button">JSONを書き出す</button>
+          <label class="btn btn-soft upload-btn">JSONを読み込む<input type="file" id="importFile" accept=".json" hidden /></label>
+          <button class="btn btn-soft" id="resetBtn" type="button">初期データに戻す</button>
+        </div>
+        <div id="adminMessage" class="admin-message" aria-live="polite"></div>
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>名前</th><th>性別</th><th>年齢</th><th>性格</th><th>ラベル</th><th>タグ</th><th>画像</th><th>状態</th><th>紹介文</th><th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="adminTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+      <aside class="admin-side">
+        <div class="guide-box">
+          <h2>入力例</h2>
+          <ul class="admin-list">
+            <li><strong>性格</strong>：甘えんぼ,穏やか</li>
+            <li><strong>ラベル</strong>：里親募集中</li>
+            <li><strong>タグ</strong>：女の子,仔猫</li>
+            <li><strong>画像</strong>：images/newcat.jpg</li>
+            <li><strong>状態</strong>：募集中</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container footer-wrap">
+    <div>© 2026 ねこのようちえん</div>
+    <div class="footer-links">
+      <a href="cats.html">里親募集中</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="admin.html">里親情報更新</a>
+    </div>
+  </div>
+</footer>
+
+<script src="data/cats.js"></script>
+<script src="script.js"></script>
+</body></html>
