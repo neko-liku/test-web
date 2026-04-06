@@ -39,3 +39,8 @@
 補足
 - Facebook は iframe 埋め込みを追加
 - Instagram は仕様変更の影響を受けやすいため、この版ではリンク中心
+
+
+今回の追加
+- トップの SNS セクション内に LINEスタンプ導線を追加
+- contact.html に LINEスタンプのリンクを追加
