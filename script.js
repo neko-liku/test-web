@@ -10,6 +10,19 @@ if (toggle && menu) {
 
 const STORAGE_KEY = 'nekohoiku_cats_data_v1';
 
+const ADMIN_PASSWORD = 'Rieko';
+
+function verifyAdminPassword(actionLabel = 'この操作') {
+  const input = window.prompt(`${actionLabel}を行うにはパスワードを入力してください。`);
+  if (input === null) return false;
+  if (input !== ADMIN_PASSWORD) {
+    alert('パスワードが正しくありません。');
+    return false;
+  }
+  return true;
+}
+
+
 function getDefaultCatsData() {
   if (typeof catsData !== 'undefined') return JSON.parse(JSON.stringify(catsData));
   return [];
@@ -118,12 +131,14 @@ function collectAdminTableData() {
   }).filter(cat => cat.name);
 }
 function saveAdminData() {
+  if (!verifyAdminPassword('保存')) return;
   const data = collectAdminTableData();
   setCatsData(data);
   showAdminMessage('この端末に保存しました。cats.html に反映されます。', 'ok');
   renderAdminTable();
 }
 function addNewCat() {
+  if (!verifyAdminPassword('新しい猫さんの追加')) return;
   const data = getCatsData();
   data.push({
     name: '新しい猫さん',
@@ -141,6 +156,7 @@ function addNewCat() {
   showAdminMessage('新しい行を追加しました。入力後に保存してください。', 'ok');
 }
 function deleteCat(index) {
+  if (!verifyAdminPassword('削除')) return;
   const data = getCatsData();
   data.splice(index, 1);
   setCatsData(data);
@@ -159,6 +175,7 @@ function exportCatsJson() {
   showAdminMessage('JSONを書き出しました。', 'ok');
 }
 function importCatsJson(file) {
+  if (!verifyAdminPassword('JSONの読み込み')) return;
   const reader = new FileReader();
   reader.onload = (e) => {
     try {
@@ -174,6 +191,7 @@ function importCatsJson(file) {
   reader.readAsText(file, 'utf-8');
 }
 function resetToDefaultData() {
+  if (!verifyAdminPassword('初期データへのリセット')) return;
   localStorage.removeItem(STORAGE_KEY);
   renderAdminTable();
   showAdminMessage('初期データに戻しました。', 'ok');
