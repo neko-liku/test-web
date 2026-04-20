@@ -824,7 +824,7 @@ footer {
 
 .floating-mini {
   position: absolute;
-  right: -14px;
+  right: 30px;
   top: 52%;
   transform: translateY(-50%);
   width: 180px;
