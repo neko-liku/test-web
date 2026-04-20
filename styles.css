@@ -801,9 +801,16 @@ footer {
 }
 
 
-/* ===== Hero 浮動框固定位置修正 ===== */
+/* ===== Hero 浮動框最終修正版（不遮臉 + 響應式正常） ===== */
 .hero-card {
   position: relative;
+  padding-right: 180px;
+  overflow: visible;
+}
+
+.hero-main-photo {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-main-photo img {
@@ -811,15 +818,19 @@ footer {
   height: 520px;
   object-fit: cover;
   display: block;
+  border-radius: 32px;
 }
 
 .floating-mini {
   position: absolute;
-  right: 20px;
-  bottom: 20px;
-  top: auto !important;
-  left: auto !important;
-  transform: none !important;
+  right: 0;
+  top: 60px;
+  width: 180px;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  border-radius: 22px;
+  padding: 14px;
   z-index: 3;
 }
 
@@ -827,7 +838,41 @@ footer {
   position: absolute;
   left: -18px;
   bottom: 24px;
-  top: auto !important;
-  transform: none !important;
+  width: 220px;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  border-radius: 22px;
+  padding: 14px;
   z-index: 3;
+}
+
+.hero-kv {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 980px) {
+  .hero-card {
+    padding-right: 0;
+  }
+
+  .floating-mini,
+  .floating-note {
+    position: static;
+    width: auto;
+    margin-top: 14px;
+  }
+
+  .hero-main-photo img {
+    height: 420px;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero-main-photo img {
+    height: 340px;
+  }
 }
