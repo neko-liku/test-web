@@ -255,8 +255,8 @@ code {
 }
 
 .floating-mini {
-  right: -14px;
-  top: 24px;
+  right: -8px;
+  top: 48px;
   width: 180px;
 }
 
@@ -286,7 +286,7 @@ code {
 .story-photo img {
   width: 100%;
   border-radius: 22px;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 20 / 10;
   object-fit: cover;
 }
 
