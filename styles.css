@@ -813,7 +813,7 @@ footer {
   display: block;
 }
 
-.float-mini {
+.floating-mini {
   position: absolute;
   right: 20px;
   bottom: 20px;
