@@ -255,9 +255,9 @@ code {
 }
 
 .floating-mini {
-  right: -10px;
-  top: 300px;
-  width: 180px;
+  right: -18px;
+  bottom: 240px;
+  width: 220px;
 }
 
 .floating-note strong,
