@@ -255,8 +255,8 @@ code {
 }
 
 .floating-mini {
-  right: -40px;
-  top: 148px;
+  right: -10px;
+  top: 48px;
   width: 180px;
 }
 
@@ -286,7 +286,7 @@ code {
 .story-photo img {
   width: 100%;
   border-radius: 22px;
-  aspect-ratio: 25 / 10;
+  aspect-ratio: 20 / 10;
   object-fit: cover;
 }
 
@@ -794,4 +794,21 @@ footer {
 .stamp-card p{
   margin:0 0 14px;
   color:var(--text-light);
+}
+
+
+/* ===== FIX 1: logo cropping (Safari対応) ===== */
+.hero img {
+  object-fit: contain !important;
+  width: 100%;
+  height: auto;
+}
+
+/* ===== FIX 2: floating box reposition ===== */
+.float-mini {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  top: auto !important;
+  transform: none !important;
 }
