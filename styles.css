@@ -255,8 +255,8 @@ code {
 }
 
 .floating-mini {
-  right: 18px;
-  top: 250px;
+  right: -10px;
+  top: 48px;
   width: 180px;
 }
 
@@ -801,30 +801,32 @@ footer {
 }
 
 
-/* ===== Hero 浮動框最終修正版（不遮臉 + 響應式正常） ===== */
+/* ===== Hero 浮動框跨瀏覽器穩定版（Chrome / Safari / 手機） ===== */
 .hero-card {
   position: relative;
-  padding-right: 180px;
   overflow: visible;
 }
 
 .hero-main-photo {
   position: relative;
   z-index: 1;
+  border-radius: 32px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
 }
 
 .hero-main-photo img {
   width: 100%;
-  height: 520px;
+  height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 32px;
 }
 
 .floating-mini {
   position: absolute;
-  right: 0;
-  top: 60px;
+  right: -14px;
+  top: 52%;
+  transform: translateY(-50%);
   width: 180px;
   background: rgba(255,255,255,0.96);
   border: 1px solid var(--line);
@@ -854,16 +856,24 @@ footer {
   align-items: center;
 }
 
-@media (max-width: 980px) {
-  .hero-card {
-    padding-right: 0;
+@media (max-width: 1180px) {
+  .floating-mini {
+    right: 8px;
+    top: 54%;
   }
+}
 
+@media (max-width: 980px) {
   .floating-mini,
   .floating-note {
     position: static;
+    transform: none;
     width: auto;
     margin-top: 14px;
+  }
+
+  .hero-main-photo {
+    aspect-ratio: auto;
   }
 
   .hero-main-photo img {
