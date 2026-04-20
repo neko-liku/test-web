@@ -232,7 +232,33 @@ code {
   background: var(--card);
 }
 
-/* hero-card / floating positions are unified in the final Hero block near the end of this file */
+.hero-main-photo img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+}
+
+.floating-note,
+.floating-mini {
+  position: absolute;
+  background: rgba(255,255,255,0.94);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  border-radius: 22px;
+  padding: 14px;
+}
+
+.floating-note {
+  left: -18px;
+  bottom: 24px;
+  width: 220px;
+}
+
+.floating-mini {
+  right: -10px;
+  top: 48px;
+  width: 180px;
+}
 
 .floating-note strong,
 .floating-mini strong { display: block; margin-bottom: 4px; }
@@ -786,18 +812,19 @@ footer {
   z-index: 1;
   border-radius: 32px;
   overflow: hidden;
+  aspect-ratio: 1 / 1;
 }
 
 .hero-main-photo img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  object-fit: contain;
 }
 
 .floating-mini {
   position: absolute;
-  right: 30px;
+  right: -14px;
   top: 52%;
   transform: translateY(-50%);
   width: 180px;
