@@ -812,7 +812,7 @@ footer {
   z-index: 1;
   border-radius: 32px;
   overflow: hidden;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1.2 / 1;
 }
 
 .hero-main-photo img {
@@ -824,7 +824,7 @@ footer {
 
 .floating-mini {
   position: absolute;
-  right: 30px;
+  right: 10px;
   top: 52%;
   transform: translateY(-50%);
   width: 180px;
