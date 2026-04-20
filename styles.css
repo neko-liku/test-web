@@ -277,22 +277,21 @@ code {
   box-shadow: var(--shadow);
   border-radius: 28px;
   padding: 28px;
+  display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 22px;
   align-items: center;
-  height: auto;          /* ⭐取消固定高度 */
-  overflow: visible;     /* ⭐不要裁切 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
+/* ===== story-photo 完整顯示，不影響 hero ===== */
 .story-photo img {
   width: 100%;
-  max-width: 480px;
+  max-width: 520px;
   height: auto;
   object-fit: contain;
-  border-radius: 20px;
+  display: block;
+  margin: 0 auto;
+  aspect-ratio: auto !important;
 }
 
 .story-copy p {
@@ -802,18 +801,33 @@ footer {
 }
 
 
-/* ===== FIX 1: logo cropping (Safari対応) ===== */
-.hero img {
-  object-fit: contain !important;
-  width: 100%;
-  height: auto;
+/* ===== Hero 浮動框固定位置修正 ===== */
+.hero-card {
+  position: relative;
 }
 
-/* ===== FIX 2: floating box reposition ===== */
+.hero-main-photo img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+}
+
 .float-mini {
   position: absolute;
   right: 20px;
   bottom: 20px;
   top: auto !important;
+  left: auto !important;
   transform: none !important;
+  z-index: 3;
+}
+
+.floating-note {
+  position: absolute;
+  left: -18px;
+  bottom: 24px;
+  top: auto !important;
+  transform: none !important;
+  z-index: 3;
 }
