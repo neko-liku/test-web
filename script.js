@@ -8,7 +8,7 @@ if (toggle && menu) {
   });
 }
 
-const STORAGE_KEY = 'nekohoiku_cats_data_v1';
+const STORAGE_KEY = 'nekohoiku_cats_data_v2';
 
 const ADMIN_PASSWORD = 'Rieko';
 
@@ -51,6 +51,7 @@ function renderCats(filter = 'all') {
   const grid = document.getElementById('catsGrid');
   if (!grid) return;
   const activeData = getCatsData();
+  const isHomePreview = Boolean(grid.closest('.home-cats-preview'));
   const filtered = activeData.filter(cat => {
     if (filter === 'all') return true;
     const personality = Array.isArray(cat.personality) ? cat.personality : [];
@@ -58,28 +59,41 @@ function renderCats(filter = 'all') {
     return personality.includes(filter) || tags.includes(filter) || cat.badge === filter;
   });
 
-  grid.innerHTML = filtered.map(cat => `
-    <article class="cat-card">
-      <img src="${esc(cat.image)}" alt="${esc(cat.name)}" />
-      <div class="cat-body">
-        <div class="cat-top">
-          <h3 class="cat-name">${esc(cat.name)}</h3>
-          <span class="tag">${esc(cat.badge)}</span>
+  grid.classList.toggle('cat-gallery', isHomePreview);
+
+  grid.innerHTML = filtered.map(cat => {
+    if (isHomePreview) {
+      return `
+        <a class="cat-card cat-tile" href="cats.html" aria-label="${esc(cat.name)}の詳細を見る">
+          <img src="${esc(cat.image)}" alt="${esc(cat.name)}" loading="lazy" />
+          <div class="cat-tile-name">${esc(cat.name)}</div>
+        </a>
+      `;
+    }
+
+    return `
+      <article class="cat-card">
+        <img src="${esc(cat.image)}" alt="${esc(cat.name)}" loading="lazy" />
+        <div class="cat-body">
+          <div class="cat-top">
+            <h3 class="cat-name">${esc(cat.name)}</h3>
+            <span class="tag">${esc(cat.badge)}</span>
+          </div>
+          <div class="meta">
+            <span>${esc(cat.gender)}</span>
+            <span>${esc(cat.age)}</span>
+            <span>${esc(cat.status)}</span>
+            ${(Array.isArray(cat.tags) ? cat.tags : []).map(tag => `<span>${esc(tag)}</span>`).join('')}
+          </div>
+          <p>${esc(cat.description)}</p>
+          <div class="cat-actions">
+            <a class="btn btn-primary" href="contact.html">お問い合わせ</a>
+            <a class="btn btn-soft" href="admin.html">更新ページ</a>
+          </div>
         </div>
-        <div class="meta">
-          <span>${esc(cat.gender)}</span>
-          <span>${esc(cat.age)}</span>
-          <span>${esc(cat.status)}</span>
-          ${(Array.isArray(cat.tags) ? cat.tags : []).map(tag => `<span>${esc(tag)}</span>`).join('')}
-        </div>
-        <p>${esc(cat.description)}</p>
-        <div class="cat-actions">
-          <a class="btn btn-primary" href="contact.html">お問い合わせ</a>
-          <a class="btn btn-soft" href="admin.html">更新ページ</a>
-        </div>
-      </div>
-    </article>
-  `).join('');
+      </article>
+    `;
+  }).join('');
 
   if (!filtered.length) {
     grid.innerHTML = `<div class="empty-box">該当する猫さんはいません。</div>`;
