@@ -7,7 +7,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "成猫"],
     description: "やさしい性格で、落ち着いて人に慣れていくタイプの猫さんです。相性を見ながらご縁を探しています。",
-    image: "images/cats/まあちゃん.png",
+    image: "images/cats/まあちゃん.jpg",
     status: "募集中"
   },
   {
@@ -18,7 +18,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["白キジトラ"],
     description: "遊ぶのが大好きで、少しずつ環境に慣れていくタイプです。毎日の変化が楽しい猫さんです。",
-    image: "images/トロ.jpg",
+    image: "images/cats/トロ.jpg",
     status: "募集中"
   },
   {
@@ -29,7 +29,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "2匹一緒も相談可"],
     description: "仲良しの2匹です。性格や生活リズムを見ながら、安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/しん.jpg",
+    image: "images/cats/しん.jpg",
     status: "募集中"
   },
   {
@@ -40,7 +40,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子"],
     description: "仲良しの2匹です。性格や生活リズムを見ながら、安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/ぜん.jpg",
+    image: "images/cats/ぜん.jpg",
     status: "募集中"
   },
   {
@@ -51,7 +51,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["男の子"],
     description: "サビちゃんと三兄弟、安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/すみ.jpg",
+    image: "images/cats/すみ.jpg",
     status: "募集中"
   },
   {
@@ -62,7 +62,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子"],
     description: "黒猫のすみちゃんと三兄弟、安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/みかん.jpg",
+    image: "images/cats/みかん.jpg",
     status: "募集中"
   },
   {
@@ -73,7 +73,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子"],
     description: "黒猫のすみちゃんと三兄弟、安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/せん.jpg",
+    image: "images/cats/せん.jpg",
     status: "募集中"
   },
   {
@@ -84,7 +84,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "ハチワレ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/あーしゃ.jpg",
+    image: "images/cats/あーしゃ.jpg",
     status: "募集中"
   },
   {
@@ -95,7 +95,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["男の子", "ハチワレ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/ぼう.jpg",
+    image: "images/cats/ぼう.jpg",
     status: "募集中"
   },
   {
@@ -106,7 +106,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "三毛"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/ウルル.jpg",
+    image: "images/cats/ウルル.jpg",
     status: "募集中"
   },
   {
@@ -117,7 +117,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "三毛"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/ミッフィ.jpg",
+    image: "images/cats/ミッフィ.jpg",
     status: "募集中"
   },
   {
@@ -128,7 +128,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["男の子", "ハチワレ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/ぎん.jpg",
+    image: "images/cats/ぎん.jpg",
     status: "募集中"
   },
   {
@@ -139,7 +139,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "白キジトラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/あんゃ.jpg",
+    image: "images/cats/あんゃ.jpg",
     status: "募集中"
   },
   {
@@ -150,7 +150,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "白キジトラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/さくら.jpg",
+    image: "images/cats/さくら.jpg",
     status: "募集中"
   },
   {
@@ -161,7 +161,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["男の子", "ハチワレ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/たんじろう.jpg",
+    image: "images/cats/たんじろう.jpg",
     status: "募集中"
   },
   {
@@ -172,7 +172,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "キジトラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/ひんやり.jpg",
+    image: "images/cats/ひんやり.jpg",
     status: "募集中"
   },
   {
@@ -183,7 +183,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["男の子", "白茶トラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/チャッピー.jpg",
+    image: "images/cats/チャッピー.jpg",
     status: "募集中"
   },
   {
@@ -194,7 +194,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["男の子", "キジトラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/だる.jpg",
+    image: "images/cats/だる.jpg",
     status: "募集中"
   },
   {
@@ -205,7 +205,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "白キジトラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/ナラ.jpg",
+    image: "images/cats/ナラ.jpg",
     status: "募集中"
   },
   {
@@ -216,7 +216,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "白茶トラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/はる.jpg",
+    image: "images/cats/はる.jpg",
     status: "募集中"
   },
   {
@@ -227,7 +227,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "三毛"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/おねえちゃん.jpg",
+    image: "images/cats/おねえちゃん.jpg",
     status: "募集中"
   },
   {
@@ -238,7 +238,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["男の子", "茶トラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/ギザ.jpg",
+    image: "images/cats/ギザ.jpg",
     status: "募集中"
   },
   {
@@ -249,7 +249,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["男の子", "白茶トラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/さぶろう.jpg",
+    image: "images/cats/さぶろう.jpg",
     status: "看板猫"
   },
   {
@@ -260,7 +260,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "白茶トラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/さびーにゃ.jpg",
+    image: "images/cats/さびーにゃ.jpg",
     status: "募集中"
   },
   {
@@ -271,7 +271,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "白キジトラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/ジュネ.jpg",
+    image: "images/cats/ジュネ.jpg",
     status: "募集中"
   },
   {
@@ -282,7 +282,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "ハチワレ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/ミント.jpg",
+    image: "images/cats/ミント.jpg",
     status: "募集中"
   },
   {
@@ -293,7 +293,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "三毛"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/ななこ.jpg",
+    image: "images/cats/ななこ.jpg",
     status: "募集中"
   },
   {
@@ -304,7 +304,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "三毛"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/みー.jpg",
+    image: "images/cats/みー.jpg",
     status: "募集中"
   },
   {
@@ -315,7 +315,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "さび"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/つゆ.jpg",
+    image: "images/cats/つゆ.jpg",
     status: "募集中"
   },
   {
@@ -326,7 +326,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "三毛"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/テラ.jpg",
+    image: "images/cats/テラ.jpg",
     status: "募集中"
   },
   {
@@ -337,7 +337,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "白キジトラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/ソック.jpg",
+    image: "images/cats/ソック.jpg",
     status: "募集中"
   },
   {
@@ -348,7 +348,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "キジトラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/まな.jpg",
+    image: "images/cats/まな.jpg",
     status: "募集中"
   },
   {
@@ -359,7 +359,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "白猫"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/かもめ.jpg",
+    image: "images/cats/かもめ.jpg",
     status: "募集中"
   },
   {
@@ -370,7 +370,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["男の子", "白茶トラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/ウィン.jpg",
+    image: "images/cats/ウィン.jpg",
     status: "募集中"
   },
   {
@@ -381,7 +381,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["男の子", "白キジトラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/たくや.jpg",
+    image: "images/cats/たくや.jpg",
     status: "募集中"
   },
   {
@@ -392,7 +392,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "さび"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/シェル.jpg",
+    image: "images/cats/シェル.jpg",
     status: "募集中"
   },
   {
@@ -403,7 +403,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["男の子", "白茶トラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/やまぴー.jpg",
+    image: "images/cats/やまぴー.jpg",
     status: "募集中"
   },
   {
@@ -414,7 +414,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["男の子", "白キジトラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/ぽんた.jpg",
+    image: "images/cats/ぽんた.jpg",
     status: "募集中"
   },
   {
@@ -425,7 +425,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["男の子", "黒猫"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/くろっぴー.jpg",
+    image: "images/cats/くろっぴー.jpg",
     status: "募集中"
   },
   {
@@ -436,7 +436,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["女の子", "さび"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/ハコ娘.jpg",
+    image: "images/cats/ハコ娘.jpg",
     status: "募集中"
   },
   {
@@ -447,7 +447,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["男の子", "キジトラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/かな.jpg",
+    image: "images/cats/かな.jpg",
     status: "募集中"
   },
   {
@@ -458,7 +458,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["男の子", "白茶トラ"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/ひまわり.jpg",
+    image: "images/cats/ひまわり.jpg",
     status: "募集中"
   },
   {
@@ -469,7 +469,7 @@ const catsData = [
     badge: "里親募集中",
     tags: ["男の子", "白猫"],
     description: "安心して暮らせるご家庭とのご縁を探しています。",
-    image: "images/アクア.jpg",
+    image: "images/cats/アクア.jpg",
     status: "募集中"
   },
 ];
