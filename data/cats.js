@@ -1,17 +1,17 @@
 const catsData = [
   {
-    name: "姫ちゃん",
+    name: "まあちゃん",
     gender: "女の子",
-    age: "仔猫",
-    personality: ["甘えんぼ", "新生活募集中"],
+    age: "成猫",
+    personality: ["甘え坊", "新生活募集中"],
     badge: "里親募集中",
-    tags: ["女の子", "仔猫"],
+    tags: ["女の子", "成猫"],
     description: "やさしい性格で、落ち着いて人に慣れていくタイプの猫さんです。相性を見ながらご縁を探しています。",
-    image: "images/hime.svg",
+    image: "images/cats/まあちゃん.png",
     status: "募集中"
   },
   {
-    name: "トム君",
+    name: "トロ",
     gender: "男の子",
     age: "仔猫",
     personality: ["元気", "遊び好き"],
