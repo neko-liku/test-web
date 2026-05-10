@@ -37,11 +37,11 @@
       <h2>使い方</h2>
       <ol>
         <li>新しい猫さんを追加する、または既存の情報を修正する</li>
-        <li>「この端末に保存」を押す</li>
-        <li><code>cats.html</code> で表示を確認する</li>
-        <li>必要なら「JSONを書き出す」でバックアップする</li>
+        <li>「この端末に保存」を押して、<code>cats.html</code> で表示を確認する</li>
+        <li>公開用に反映する場合は「cats.jsを書き出す」を押す</li>
+        <li>ダウンロードした <code>cats.js</code> を <code>data/cats.js</code> に上書きして、GitHubへアップロードする</li>
       </ol>
-      <p class="small-note">※ この管理ページはブラウザ保存型です。別のPCには自動同期されません。<br>※ 追加・保存・削除・読み込み・リセット時にはパスワード <code>Rieko</code> が必要です。</p>
+      <p class="small-note">※ GitHub Pagesのような静的サイトでは、ブラウザからサーバー上の <code>data/cats.js</code> を直接書き換えることはできません。<br>※ 公開データを更新する時は、このページで <code>cats.js</code> を書き出して <code>data/cats.js</code> に上書きしてください。<br>※ 追加・保存・削除・読み込み・リセット時にはパスワード <code>Rieko</code> が必要です。</p>
     </section>
 
     <div class="admin-layout">
@@ -49,8 +49,9 @@
         <div class="admin-toolbar">
           <button class="btn btn-primary" id="newCatBtn" type="button">＋ 新しい猫さんを追加</button>
           <button class="btn btn-soft" id="saveLocalBtn" type="button">この端末に保存</button>
-          <button class="btn btn-soft" id="exportBtn" type="button">JSONを書き出す</button>
-          <label class="btn btn-soft upload-btn">JSONを読み込む<input type="file" id="importFile" accept=".json" hidden /></label>
+          <button class="btn btn-soft" id="exportBtn" type="button">cats.jsを書き出す</button>
+          <button class="btn btn-soft" id="exportJsonBtn" type="button">JSONを書き出す</button>
+          <label class="btn btn-soft upload-btn">cats.js / JSONを読み込む<input type="file" id="importFile" accept=".js,.json" hidden /></label>
           <button class="btn btn-soft" id="resetBtn" type="button">初期データに戻す</button>
         </div>
         <div id="adminMessage" class="admin-message" aria-live="polite"></div>

@@ -54,9 +54,7 @@ function renderCats(filter = 'all') {
   const isHomePreview = Boolean(grid.closest('.home-cats-preview'));
   const filtered = activeData.filter(cat => {
     if (filter === 'all') return true;
-    const personality = Array.isArray(cat.personality) ? cat.personality : [];
-    const tags = Array.isArray(cat.tags) ? cat.tags : [];
-    return personality.includes(filter) || tags.includes(filter) || cat.badge === filter;
+    return getCatSearchTokens(cat).includes(filter);
   });
 
   grid.classList.toggle('cat-gallery', isHomePreview);
@@ -101,6 +99,21 @@ function renderCats(filter = 'all') {
 }
 function parseCommaList(value) {
   return String(value || '').split(',').map(v => v.trim()).filter(Boolean);
+}
+function getCatSearchTokens(cat) {
+  const tokens = [
+    ...(Array.isArray(cat.personality) ? cat.personality : []),
+    ...(Array.isArray(cat.tags) ? cat.tags : []),
+    cat.badge,
+    cat.gender,
+    cat.age
+  ].map(v => String(v || '').trim()).filter(Boolean);
+
+  // 表記ゆれ対策：データ側が「仔猫」、ボタン側が「子猫」でも検索できるようにする
+  if (tokens.includes('仔猫') && !tokens.includes('子猫')) tokens.push('子猫');
+  if (tokens.includes('子猫') && !tokens.includes('仔猫')) tokens.push('仔猫');
+
+  return tokens;
 }
 function showAdminMessage(text, type = 'ok') {
   const box = document.getElementById('adminMessage');
@@ -177,6 +190,20 @@ function deleteCat(index) {
   renderAdminTable();
   showAdminMessage('1件削除しました。', 'ok');
 }
+function catsDataToJsText(data) {
+  return `const catsData = ${JSON.stringify(data, null, 2)};\n`;
+}
+function exportCatsJs() {
+  const data = collectAdminTableData();
+  const blob = new Blob([catsDataToJsText(data)], { type: 'text/javascript' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'cats.js';
+  a.click();
+  URL.revokeObjectURL(url);
+  showAdminMessage('cats.jsを書き出しました。data/cats.js に上書きできます。', 'ok');
+}
 function exportCatsJson() {
   const data = collectAdminTableData();
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
@@ -188,18 +215,25 @@ function exportCatsJson() {
   URL.revokeObjectURL(url);
   showAdminMessage('JSONを書き出しました。', 'ok');
 }
-function importCatsJson(file) {
-  if (!verifyAdminPassword('JSONの読み込み')) return;
+function parseCatsFileText(text, fileName = '') {
+  const trimmed = String(text || '').trim();
+  if (fileName.toLowerCase().endsWith('.json') || trimmed.startsWith('[')) {
+    return JSON.parse(trimmed);
+  }
+  return Function(`${trimmed}\n; return catsData;`)();
+}
+function importCatsFile(file) {
+  if (!verifyAdminPassword('ファイルの読み込み')) return;
   const reader = new FileReader();
   reader.onload = (e) => {
     try {
-      const parsed = JSON.parse(e.target.result);
+      const parsed = parseCatsFileText(e.target.result, file.name);
       if (!Array.isArray(parsed)) throw new Error('invalid');
       setCatsData(parsed);
       renderAdminTable();
-      showAdminMessage('JSONを読み込みました。', 'ok');
+      showAdminMessage('ファイルを読み込みました。確認後、必要なら「cats.jsを書き出す」で保存してください。', 'ok');
     } catch {
-      showAdminMessage('読み込みに失敗しました。JSON形式を確認してください。', 'error');
+      showAdminMessage('読み込みに失敗しました。cats.js または JSON の形式を確認してください。', 'error');
     }
   };
   reader.readAsText(file, 'utf-8');
@@ -229,11 +263,12 @@ document.addEventListener('DOMContentLoaded', () => {
     renderAdminTable();
     document.getElementById('newCatBtn')?.addEventListener('click', addNewCat);
     document.getElementById('saveLocalBtn')?.addEventListener('click', saveAdminData);
-    document.getElementById('exportBtn')?.addEventListener('click', exportCatsJson);
+    document.getElementById('exportBtn')?.addEventListener('click', exportCatsJs);
+    document.getElementById('exportJsonBtn')?.addEventListener('click', exportCatsJson);
     document.getElementById('resetBtn')?.addEventListener('click', resetToDefaultData);
     document.getElementById('importFile')?.addEventListener('change', (e) => {
       const file = e.target.files?.[0];
-      if (file) importCatsJson(file);
+      if (file) importCatsFile(file);
       e.target.value = '';
     });
   }
