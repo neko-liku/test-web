@@ -8,7 +8,6 @@ const catsData = [
     tags: ["三毛"],
     description: "体調不良のため、募集一時期停止しています。",
     image: "images/cats/cat-01.jpg",
-    status: "現在募集なし"
   },
   {
     name: "トロ",
