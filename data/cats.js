@@ -3,12 +3,11 @@ const catsData = [
     name: "まあちゃん",
     gender: "女の子",
     age: "成猫",
-    personality: ["甘え坊", "新生活募集中"],
-    badge: "里親募集中",
-    tags: ["女の子", "成猫"],
-    description: "やさしい性格で、落ち着いて人に慣れていくタイプの猫さんです。相性を見ながらご縁を探しています。",
+    personality: ["甘え坊"],
+    badge: "現在募集なし",
+    tags: ["三毛"],
+    description: "体調不良のため、募集一時期停止しています。",
     image: "images/cats/cat-01.jpg",
-    status: "募集中"
   },
   {
     name: "トロ",
