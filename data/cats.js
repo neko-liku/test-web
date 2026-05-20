@@ -7,7 +7,7 @@ const catsData = [
     badge: "現在募集なし",
     tags: ["三毛"],
     description: "体調不良のため、募集一時期停止しています。",
-    image: "images/cats/cat-01.jpg",
+    image: "images/cats/cat-01.jpg"
   },
   {
     name: "トロ",
