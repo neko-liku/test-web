@@ -1,4 +1,4 @@
-script = r'''const toggle = document.getElementById('menuToggle');
+const toggle = document.getElementById('menuToggle');
 const menu = document.getElementById('mobileMenu');
 
 if (toggle && menu) {
@@ -7,6 +7,8 @@ if (toggle && menu) {
     link.addEventListener('click', () => menu.classList.remove('open'));
   });
 }
+
+const STORAGE_KEY = 'nekohoiku_cats_data_v2';
 
 const ADMIN_PASSWORD = 'Rieko';
 
@@ -20,34 +22,24 @@ function verifyAdminPassword(actionLabel = 'この操作') {
   return true;
 }
 
-function cloneCatsData(data) {
-  return JSON.parse(JSON.stringify(Array.isArray(data) ? data : []));
-}
 
 function getDefaultCatsData() {
-  if (typeof catsData !== 'undefined') return cloneCatsData(catsData);
+  if (typeof catsData !== 'undefined') return JSON.parse(JSON.stringify(catsData));
   return [];
 }
-
-/*
-  表示用データは、常に data/cats.js の catsData を元にします。
-  localStorage は使いません。
-
-  ただし admin.html では、追加・削除・読み込み後に画面上で編集を続けられるよう、
-  このページを開いている間だけ window.adminCatsDraft に一時データを持たせます。
-  ブラウザを閉じたり再読み込みした場合は、再び data/cats.js の内容に戻ります。
-*/
 function getCatsData() {
-  if (document.getElementById('adminTableBody') && Array.isArray(window.adminCatsDraft)) {
-    return cloneCatsData(window.adminCatsDraft);
+  const local = localStorage.getItem(STORAGE_KEY);
+  if (!local) return getDefaultCatsData();
+  try {
+    const parsed = JSON.parse(local);
+    return Array.isArray(parsed) ? parsed : getDefaultCatsData();
+  } catch {
+    return getDefaultCatsData();
   }
-  return getDefaultCatsData();
 }
-
 function setCatsData(data) {
-  window.adminCatsDraft = cloneCatsData(data);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data, null, 2));
 }
-
 function esc(str) {
   return String(str ?? '')
     .replaceAll('&', '&amp;')
@@ -55,14 +47,11 @@ function esc(str) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;');
 }
-
 function renderCats(filter = 'all') {
   const grid = document.getElementById('catsGrid');
   if (!grid) return;
-
   const activeData = getCatsData();
   const isHomePreview = Boolean(grid.closest('.home-cats-preview'));
-
   const filtered = activeData.filter(cat => {
     if (filter === 'all') return true;
     return getCatSearchTokens(cat).includes(filter);
@@ -91,11 +80,13 @@ function renderCats(filter = 'all') {
           <div class="meta">
             <span>${esc(cat.gender)}</span>
             <span>${esc(cat.age)}</span>
+            <span>${esc(cat.status)}</span>
             ${(Array.isArray(cat.tags) ? cat.tags : []).map(tag => `<span>${esc(tag)}</span>`).join('')}
           </div>
           <p>${esc(cat.description)}</p>
           <div class="cat-actions">
             <a class="btn btn-primary" href="contact.html">お問い合わせ</a>
+            <a class="btn btn-soft" href="admin.html">更新ページ</a>
           </div>
         </div>
       </article>
@@ -106,11 +97,9 @@ function renderCats(filter = 'all') {
     grid.innerHTML = `<div class="empty-box">該当する猫さんはいません。</div>`;
   }
 }
-
 function parseCommaList(value) {
   return String(value || '').split(',').map(v => v.trim()).filter(Boolean);
 }
-
 function getCatSearchTokens(cat) {
   const tokens = [
     ...(Array.isArray(cat.personality) ? cat.personality : []),
@@ -126,18 +115,15 @@ function getCatSearchTokens(cat) {
 
   return tokens;
 }
-
 function showAdminMessage(text, type = 'ok') {
   const box = document.getElementById('adminMessage');
   if (!box) return;
   box.textContent = text;
   box.className = `admin-message ${type}`;
 }
-
 function renderAdminTable() {
   const body = document.getElementById('adminTableBody');
   if (!body) return;
-
   const activeData = getCatsData();
   body.innerHTML = activeData.map((cat, idx) => `
     <tr data-index="${idx}">
@@ -148,12 +134,12 @@ function renderAdminTable() {
       <td><input class="admin-input" data-field="badge" value="${esc(cat.badge)}"></td>
       <td><input class="admin-input" data-field="tags" value="${esc((cat.tags || []).join(','))}"></td>
       <td><input class="admin-input" data-field="image" value="${esc(cat.image)}"></td>
+      <td><input class="admin-input" data-field="status" value="${esc(cat.status)}"></td>
       <td><textarea class="admin-textarea" data-field="description">${esc(cat.description)}</textarea></td>
       <td><button type="button" class="mini-btn danger" onclick="deleteCat(${idx})">削除</button></td>
     </tr>
   `).join('');
 }
-
 function collectAdminTableData() {
   const rows = document.querySelectorAll('#adminTableBody tr');
   return [...rows].map(row => {
@@ -166,22 +152,21 @@ function collectAdminTableData() {
       badge: getVal('badge'),
       tags: parseCommaList(getVal('tags')),
       description: getVal('description'),
-      image: getVal('image')
+      image: getVal('image'),
+      status: getVal('status')
     };
   }).filter(cat => cat.name);
 }
-
 function saveAdminData() {
-  if (!verifyAdminPassword('画面上の編集内容の一時反映')) return;
+  if (!verifyAdminPassword('保存')) return;
   const data = collectAdminTableData();
   setCatsData(data);
+  showAdminMessage('この端末に保存しました。cats.html に反映されます。', 'ok');
   renderAdminTable();
-  showAdminMessage('画面上の編集内容を一時反映しました。公開するには「cats.jsを書き出す」で保存し、data/cats.js を上書きしてください。', 'ok');
 }
-
 function addNewCat() {
   if (!verifyAdminPassword('新しい猫さんの追加')) return;
-  const data = collectAdminTableData();
+  const data = getCatsData();
   data.push({
     name: '新しい猫さん',
     gender: '女の子',
@@ -190,26 +175,24 @@ function addNewCat() {
     badge: '里親募集中',
     tags: ['女の子'],
     description: 'ここに紹介文を入力してください。',
-    image: 'images/newcat.jpg'
+    image: 'images/newcat.jpg',
+    status: '募集中'
   });
   setCatsData(data);
   renderAdminTable();
-  showAdminMessage('新しい行を追加しました。入力後、「cats.jsを書き出す」で保存してください。', 'ok');
+  showAdminMessage('新しい行を追加しました。入力後に保存してください。', 'ok');
 }
-
 function deleteCat(index) {
   if (!verifyAdminPassword('削除')) return;
-  const data = collectAdminTableData();
+  const data = getCatsData();
   data.splice(index, 1);
   setCatsData(data);
   renderAdminTable();
-  showAdminMessage('1件削除しました。公開するには「cats.jsを書き出す」で保存してください。', 'ok');
+  showAdminMessage('1件削除しました。', 'ok');
 }
-
 function catsDataToJsText(data) {
   return `const catsData = ${JSON.stringify(data, null, 2)};\n`;
 }
-
 function exportCatsJs() {
   const data = collectAdminTableData();
   const blob = new Blob([catsDataToJsText(data)], { type: 'text/javascript' });
@@ -219,10 +202,8 @@ function exportCatsJs() {
   a.download = 'cats.js';
   a.click();
   URL.revokeObjectURL(url);
-  setCatsData(data);
-  showAdminMessage('cats.jsを書き出しました。GitHubの data/cats.js に上書きしてください。', 'ok');
+  showAdminMessage('cats.jsを書き出しました。data/cats.js に上書きできます。', 'ok');
 }
-
 function exportCatsJson() {
   const data = collectAdminTableData();
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
@@ -232,53 +213,40 @@ function exportCatsJson() {
   a.download = 'nekohoiku-cats-data.json';
   a.click();
   URL.revokeObjectURL(url);
-  setCatsData(data);
   showAdminMessage('JSONを書き出しました。', 'ok');
 }
-
 function parseCatsFileText(text, fileName = '') {
   const trimmed = String(text || '').trim();
-
   if (fileName.toLowerCase().endsWith('.json') || trimmed.startsWith('[')) {
     return JSON.parse(trimmed);
   }
-
   return Function(`${trimmed}\n; return catsData;`)();
 }
-
 function importCatsFile(file) {
   if (!verifyAdminPassword('ファイルの読み込み')) return;
-
   const reader = new FileReader();
   reader.onload = (e) => {
     try {
       const parsed = parseCatsFileText(e.target.result, file.name);
       if (!Array.isArray(parsed)) throw new Error('invalid');
-
       setCatsData(parsed);
       renderAdminTable();
-      showAdminMessage('ファイルを読み込みました。公開するには「cats.jsを書き出す」で保存し、data/cats.js を上書きしてください。', 'ok');
+      showAdminMessage('ファイルを読み込みました。確認後、必要なら「cats.jsを書き出す」で保存してください。', 'ok');
     } catch {
       showAdminMessage('読み込みに失敗しました。cats.js または JSON の形式を確認してください。', 'error');
     }
   };
   reader.readAsText(file, 'utf-8');
 }
-
 function resetToDefaultData() {
   if (!verifyAdminPassword('初期データへのリセット')) return;
-  setCatsData(getDefaultCatsData());
+  localStorage.removeItem(STORAGE_KEY);
   renderAdminTable();
-  showAdminMessage('data/cats.js の内容に戻しました。', 'ok');
+  showAdminMessage('初期データに戻しました。', 'ok');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (document.getElementById('adminTableBody')) {
-    setCatsData(getDefaultCatsData());
-  }
-
   renderCats();
-
   const filterButtons = document.querySelectorAll('.filter-btn');
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -289,6 +257,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   if (document.getElementById('adminTableBody')) {
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      setCatsData(getDefaultCatsData());
+    }
     renderAdminTable();
     document.getElementById('newCatBtn')?.addEventListener('click', addNewCat);
     document.getElementById('saveLocalBtn')?.addEventListener('click', saveAdminData);
@@ -302,8 +273,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-'''
-path = '/mnt/data/script.js'
-with open(path, 'w', encoding='utf-8') as f:
-    f.write(script)
-print(path)
