@@ -8,7 +8,7 @@ if (toggle && menu) {
   });
 }
 
-const STORAGE_KEY = 'nekohoiku_cats_data_v2';
+
 
 const ADMIN_PASSWORD = 'Rieko';
 
@@ -23,23 +23,27 @@ function verifyAdminPassword(actionLabel = 'この操作') {
 }
 
 
+
+function cloneCatsData(data) {
+  return JSON.parse(JSON.stringify(Array.isArray(data) ? data : []));
+}
+
 function getDefaultCatsData() {
-  if (typeof catsData !== 'undefined') return JSON.parse(JSON.stringify(catsData));
+  if (typeof catsData !== 'undefined') return cloneCatsData(catsData);
   return [];
 }
+
 function getCatsData() {
-  const local = localStorage.getItem(STORAGE_KEY);
-  if (!local) return getDefaultCatsData();
-  try {
-    const parsed = JSON.parse(local);
-    return Array.isArray(parsed) ? parsed : getDefaultCatsData();
-  } catch {
-    return getDefaultCatsData();
+  if (document.getElementById('adminTableBody') && Array.isArray(window.adminCatsDraft)) {
+    return cloneCatsData(window.adminCatsDraft);
   }
+  return getDefaultCatsData();
 }
+
 function setCatsData(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data, null, 2));
+  window.adminCatsDraft = cloneCatsData(data);
 }
+
 function esc(str) {
   return String(str ?? '')
     .replaceAll('&', '&amp;')
@@ -80,13 +84,11 @@ function renderCats(filter = 'all') {
           <div class="meta">
             <span>${esc(cat.gender)}</span>
             <span>${esc(cat.age)}</span>
-            <span>${esc(cat.status)}</span>
             ${(Array.isArray(cat.tags) ? cat.tags : []).map(tag => `<span>${esc(tag)}</span>`).join('')}
           </div>
           <p>${esc(cat.description)}</p>
           <div class="cat-actions">
             <a class="btn btn-primary" href="contact.html">お問い合わせ</a>
-            <a class="btn btn-soft" href="admin.html">更新ページ</a>
           </div>
         </div>
       </article>
@@ -134,7 +136,6 @@ function renderAdminTable() {
       <td><input class="admin-input" data-field="badge" value="${esc(cat.badge)}"></td>
       <td><input class="admin-input" data-field="tags" value="${esc((cat.tags || []).join(','))}"></td>
       <td><input class="admin-input" data-field="image" value="${esc(cat.image)}"></td>
-      <td><input class="admin-input" data-field="status" value="${esc(cat.status)}"></td>
       <td><textarea class="admin-textarea" data-field="description">${esc(cat.description)}</textarea></td>
       <td><button type="button" class="mini-btn danger" onclick="deleteCat(${idx})">削除</button></td>
     </tr>
@@ -152,8 +153,7 @@ function collectAdminTableData() {
       badge: getVal('badge'),
       tags: parseCommaList(getVal('tags')),
       description: getVal('description'),
-      image: getVal('image'),
-      status: getVal('status')
+      image: getVal('image')
     };
   }).filter(cat => cat.name);
 }
@@ -175,8 +175,7 @@ function addNewCat() {
     badge: '里親募集中',
     tags: ['女の子'],
     description: 'ここに紹介文を入力してください。',
-    image: 'images/newcat.jpg',
-    status: '募集中'
+    image: 'images/newcat.jpg'
   });
   setCatsData(data);
   renderAdminTable();
@@ -240,9 +239,9 @@ function importCatsFile(file) {
 }
 function resetToDefaultData() {
   if (!verifyAdminPassword('初期データへのリセット')) return;
-  localStorage.removeItem(STORAGE_KEY);
+  setCatsData(getDefaultCatsData());
   renderAdminTable();
-  showAdminMessage('初期データに戻しました。', 'ok');
+  showAdminMessage('data/cats.js の内容に戻しました。', 'ok');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -257,9 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   if (document.getElementById('adminTableBody')) {
-    if (!localStorage.getItem(STORAGE_KEY)) {
-      setCatsData(getDefaultCatsData());
-    }
+    setCatsData(getDefaultCatsData());
     renderAdminTable();
     document.getElementById('newCatBtn')?.addEventListener('click', addNewCat);
     document.getElementById('saveLocalBtn')?.addEventListener('click', saveAdminData);
