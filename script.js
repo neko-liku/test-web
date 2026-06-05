@@ -84,7 +84,8 @@ function renderCats(filter = 'all') {
           <div class="meta">
             <span>${esc(cat.gender)}</span>
             <span>${esc(cat.age)}</span>
-            ${(Array.isArray(cat.tags) ? cat.tags : []).map(tag => `<span>${esc(tag)}</span>`).join('')}
+            ${(Array.isArray(cat.personality) ? cat.personality : []).map(tag => `<span>${esc(tag)}</span>`).join('')}
+  ${(Array.isArray(cat.tags) ? cat.tags : []).map(tag => `<span>${esc(tag)}</span>`).join('')}
           </div>
           <p>${esc(cat.description)}</p>
           <div class="cat-actions">
