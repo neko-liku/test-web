@@ -1,130 +1,76 @@
 <!DOCTYPE html>
 <html lang="ja">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>応援する｜ねこのようちえん</title>
+  <meta name="description" content="ねこのようちえんの保護猫活動を応援する方法。年会員、ご寄付、Amazonほしい物リスト、LINEスタンプ、譲渡会場での手作り作品販売について。" />
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    :root {
-      --pink: #f6a8b8;
-      --pink-dark: #e9869d;
-      --cream: #fff8f1;
-      --text: #4a3b36;
-      --white: #ffffff;
-      --shadow: 0 8px 24px rgba(120, 80, 80, 0.12);
+    .support-hero {
+      padding: 64px 0 32px;
     }
-    * { box-sizing: border-box; }
-    body {
+    .support-lead {
+      max-width: 760px;
+      color: var(--text-light);
+      font-size: 1.05rem;
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "YuGothic", "Meiryo", sans-serif;
-      color: var(--text);
-      background: var(--cream);
-      line-height: 1.8;
     }
-    header {
-      background: linear-gradient(135deg, #ffe0e8, #fff7df);
-      text-align: center;
-      padding: 56px 20px 44px;
-    }
-    header h1 {
-      margin: 0 0 10px;
-      font-size: clamp(2rem, 6vw, 3.2rem);
-      letter-spacing: 0.08em;
-    }
-    header p {
-      margin: 0 auto;
-      max-width: 720px;
-      font-size: 1.05rem;
-    }
-    main {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 36px 18px 64px;
-    }
-    .quick-links {
+    .support-links {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 14px;
-      margin: 0 0 32px;
+      margin-top: 26px;
     }
-    .quick-links a, .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 12px 18px;
-      border-radius: 999px;
-      background: var(--pink);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      box-shadow: var(--shadow);
-      transition: transform .15s ease, background .15s ease;
-      text-align: center;
-    }
-    .quick-links a:hover, .button:hover {
-      background: var(--pink-dark);
-      transform: translateY(-2px);
-    }
-    section {
-      background: var(--white);
+    .support-card {
+      background: var(--card);
+      border: 1px solid var(--line);
       border-radius: 24px;
-      padding: 28px;
-      margin: 22px 0;
       box-shadow: var(--shadow);
+      padding: 24px;
+      margin-bottom: 22px;
     }
-    h2 {
+    .support-card h2 {
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+    }
+    .support-card p {
+      color: var(--text-light);
       margin: 0 0 14px;
-      font-size: 1.55rem;
-      color: #8a514f;
     }
-    .lead { font-size: 1.05rem; }
-    .note {
-      background: #fff5f7;
-      border-left: 6px solid var(--pink);
-      padding: 14px 16px;
-      border-radius: 14px;
-      margin: 16px 0;
-    }
-    .bank {
-      background: #fffaf5;
-      border: 1px dashed #e7b9a8;
+    .support-note,
+    .bank-box {
+      background: #fff7f2;
+      border: 1px solid var(--line);
       border-radius: 18px;
-      padding: 18px;
-      font-size: 1.05rem;
+      padding: 16px 18px;
+      margin: 14px 0 0;
+    }
+    .bank-box {
       line-height: 1.9;
-      margin-top: 12px;
+      color: var(--text);
     }
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 16px;
-    }
-    img.handmade {
+    .support-photo {
       width: 100%;
-      display: block;
-      border-radius: 20px;
+      border-radius: 22px;
       box-shadow: var(--shadow);
-      margin: 12px 0 18px;
+      margin: 14px 0 18px;
     }
-    ul { padding-left: 1.4em; }
-    footer {
-      text-align: center;
-      padding: 32px 16px;
-      color: #7a6660;
-      font-size: .95rem;
+    .support-list {
+      color: var(--text-light);
+      margin: 0 0 14px;
+      padding-left: 1.2em;
     }
     @media (max-width: 760px) {
-      header { padding: 42px 18px 34px; }
-      main { padding: 24px 14px 48px; }
-      .quick-links { grid-template-columns: repeat(2, 1fr); }
-      section { padding: 22px 18px; border-radius: 20px; }
-      .button { width: 100%; }
+      .support-hero { padding: 44px 0 20px; }
+      .support-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .support-card { padding: 20px; }
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
+
+<header class="topbar">
   <div class="container nav">
     <a href="index.html" class="brand" aria-label="トップへ">
       <span class="brand-mark">🐾</span>
@@ -144,82 +90,105 @@
       <button class="menu-toggle" id="menuToggle" aria-label="開閉メニュー">☰</button>
     </div>
   </div>
-    <h1>応援する</h1>
-    <p>ねこのようちえんの保護猫活動は、皆さまからのあたたかいご支援によって支えられています。</p>
-  </header>
+</header>
 
-  <main>
-    <nav class="quick-links" aria-label="支援方法">
-      <a href="#member">年会員</a>
-      <a href="#donation">ご寄付</a>
-      <a href="#amazon">物資支援</a>
-      <a href="#goods">グッズ</a>
-    </nav>
-
-    <section>
-      <h2>猫たちのために、できる形で応援してください</h2>
-      <p class="lead">保護した猫たちの医療費、フード代、猫砂代、日々のケアに必要な費用は、皆さまからのご支援でまかなわれています。ご無理のない範囲で応援いただけますと幸いです。</p>
-    </section>
-
-    <section id="member">
-      <h2>年会員になる</h2>
-      <p>ねこのようちえんでは、活動を継続して支えてくださる年会員を募集しています。</p>
-      <div class="note">
-        <strong>年会費：1口 5,000円</strong><br />
-        複数口でのご支援も歓迎しております。
+<main>
+  <section class="support-hero">
+    <div class="container">
+      <div class="eyebrow">保護猫活動へのご支援</div>
+      <h1 class="section-title">応援する</h1>
+      <p class="support-lead">
+        ねこのようちえんの保護猫活動は、皆さまからのあたたかいご支援によって支えられています。
+        ご無理のない範囲で応援いただけますと幸いです。
+      </p>
+      <div class="support-links">
+        <a class="btn btn-soft" href="#member">年会員</a>
+        <a class="btn btn-soft" href="#donation">ご寄付</a>
+        <a class="btn btn-soft" href="#amazon">物資支援</a>
+        <a class="btn btn-soft" href="#goods">グッズ</a>
       </div>
-      <div class="button-row">
-        <a class="button" href="https://docs.google.com/forms/d/1k1yjy6RDK5_hjieVdKO13AsUA1uMurkFDDYIq_y6yFA/viewform?edit_requested=true" target="_blank" rel="noopener noreferrer">年会員申し込みフォーム</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="support-card">
+        <h2>猫たちのために、できる形で応援してください</h2>
+        <p>
+          保護した猫たちの医療費、フード代、猫砂代、日々のケアに必要な費用は、
+          皆さまからのご支援でまかなわれています。
+        </p>
       </div>
-    </section>
 
-    <section id="donation">
-      <h2>ご寄付</h2>
-      <p>活動継続のため、ご寄付も受け付けております。いただいたご寄付は保護猫たちの医療費・飼育費などに大切に使わせていただきます。</p>
-      <div class="bank">
-        <strong>お振込先</strong><br />
-        城南信用金庫　荏田支店<br />
-        普通　260622<br />
-        シャ）ネコノヨウチエン
+      <div class="support-card" id="member">
+        <h2>年会員になる</h2>
+        <p>活動を継続して支えてくださる年会員を募集しています。</p>
+        <div class="support-note">
+          <strong>年会費：1口 5,000円</strong><br />
+          複数口でのご支援も歓迎しております。
+        </div>
+        <div class="page-links">
+          <a class="btn btn-primary" href="https://docs.google.com/forms/d/1k1yjy6RDK5_hjieVdKO13AsUA1uMurkFDDYIq_y6yFA/viewform?edit_requested=true" target="_blank" rel="noopener noreferrer">年会員申し込みフォーム</a>
+        </div>
       </div>
-    </section>
 
-    <section id="amazon">
-      <h2>Amazonほしい物リスト</h2>
-      <p>フードや猫砂など、猫たちに必要な物資をご支援いただけます。</p>
-      <div class="button-row">
-        <a class="button" href="https://www.amazon.co.jp/hz/wishlist/ls/1OZ5Z9WVKHYBZ/ref=hz_ls_biz_ex?fbclid=PAdGRleASTKnNleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAacVFlIuYf8NN0ba_1vvodfwmIo6c5fdCT_Exg_YSOLg6_DZilSUwdci-ZwI4w_aem_GFr_LJn3AVZvz7zyob57Jw&amp;utm_content=link_in_bio&amp;utm_medium=social&amp;utm_source=ig" target="_blank" rel="noopener noreferrer">Amazonほしい物リストを見る</a>
+      <div class="support-card" id="donation">
+        <h2>ご寄付</h2>
+        <p>いただいたご寄付は、保護猫たちの医療費・飼育費などに大切に使わせていただきます。</p>
+        <div class="bank-box">
+          <strong>お振込先</strong><br />
+          城南信用金庫　荏田支店<br />
+          普通　260622<br />
+          シャ）ネコノヨウチエン
+        </div>
       </div>
-    </section>
 
-    <section id="line">
-      <h2>LINEスタンプ</h2>
-      <p>ねこのようちえんのLINEスタンプを販売しています。日常で使いやすい猫たちのスタンプです。</p>
-      <div class="button-row">
-        <a class="button" href="https://store.line.me/stickershop/author/5823966/ja" target="_blank" rel="noopener noreferrer">LINEスタンプを見る</a>
+      <div class="support-card" id="amazon">
+        <h2>Amazonほしい物リスト</h2>
+        <p>フードや猫砂など、猫たちに必要な物資をご支援いただけます。</p>
+        <div class="page-links">
+          <a class="btn btn-primary" href="https://www.amazon.co.jp/hz/wishlist/ls/1OZ5Z9WVKHYBZ/ref=hz_ls_biz_ex?fbclid=PAdGRleASTKnNleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAacVFlIuYf8NN0ba_1vvodfwmIo6c5fdCT_Exg_YSOLg6_DZilSUwdci-ZwI4w_aem_GFr_LJn3AVZvz7zyob57Jw&amp;utm_content=link_in_bio&amp;utm_medium=social&amp;utm_source=ig" target="_blank" rel="noopener noreferrer">Amazonほしい物リストを見る</a>
+        </div>
       </div>
-    </section>
 
-    <section id="goods">
-      <h2>手作り作品販売</h2>
-      <img class="handmade" src="images/goods.jpg"> </img>
-      <p>譲渡会場では、ボランティアによる手作り作品も販売しています。</p>
-      <ul>
-        <li>ポーチ</li>
-        <li>トートバッグ</li>
-        <li>がま口</li>
-        <li>キーケース</li>
-        <li>ティッシュケース</li>
-        <li>エコバッグ</li>
-        <li>猫おもちゃ など</li>
-      </ul>
-      <p>売上は保護猫活動費として大切に使わせていただきます。</p>
-    </section>
-  </main>
+      <div class="support-card" id="line">
+        <h2>LINEスタンプ</h2>
+        <p>ねこのようちえんのLINEスタンプを販売しています。日常で使いやすい猫たちのスタンプです。</p>
+        <div class="page-links">
+          <a class="btn btn-primary" href="https://store.line.me/stickershop/author/5823966/ja" target="_blank" rel="noopener noreferrer">LINEスタンプを見る</a>
+        </div>
+      </div>
 
-  <footer>
-    いつも温かい応援をありがとうございます。<br />
-    ねこのようちえん
-  </footer>
+      <div class="support-card" id="goods">
+        <h2>手作り作品販売</h2>
+        <img class="support-photo" src="images/goods.jpg" alt="譲渡会場で販売している手作り作品" />
+        <p>譲渡会場では、ボランティアによる手作り作品も販売しています。</p>
+        <ul class="support-list">
+          <li>ポーチ</li>
+          <li>トートバッグ</li>
+          <li>がま口</li>
+          <li>キーケース</li>
+          <li>ティッシュケース</li>
+          <li>エコバッグ</li>
+          <li>猫おもちゃ など</li>
+        </ul>
+        <p>売上は保護猫活動費として大切に使わせていただきます。</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-wrap">
+    <div>© 2026 ねこのようちえん</div>
+    <div class="footer-links">
+      <a href="cats.html">里親募集中</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="admin.html">里親情報更新</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
