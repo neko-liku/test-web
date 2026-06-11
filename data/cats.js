@@ -675,7 +675,7 @@ const catsData = [
     "badge": "譲渡済み",
     "tags": [],
     "description": "リビング組：詳細追加待ち",
-    "image": "images/cats/nan.jpg"
+    "image": "images/cats/sumo.jpg"
   },
   {
     "name": "ドリー",
@@ -711,7 +711,7 @@ const catsData = [
     "badge": "譲渡済み",
     "tags": [],
     "description": "リビング組：詳細追加待ち",
-    "image": "images/cats/nan.jpg"
+    "image": "images/cats/fuki.jpg"
   },
   {
     "name": "うさ",
@@ -723,7 +723,7 @@ const catsData = [
     "badge": "譲渡済み",
     "tags": [],
     "description": "リビング組：詳細追加待ち",
-    "image": "images/cats/nan.jpg"
+    "image": "images/cats/usa.jpg"
   },
   {
     "name": "恵多くん",
@@ -735,7 +735,7 @@ const catsData = [
     "badge": "お空に",
     "tags": [],
     "description": "保護部屋：詳細追加待ち",
-    "image": "images/cats/nan.jpg"
+    "image": "images/cats/eta.jpg"
   },
   {
     "name": "つるきち",
@@ -747,7 +747,7 @@ const catsData = [
     "badge": "現在募集なし",
     "tags": [],
     "description": "保護部屋：詳細追加待ち",
-    "image": "images/cats/nan.jpg"
+    "image": "images/cats/tsurukichi.jpg"
   },
   {
     "name": "なつめ",
@@ -783,7 +783,7 @@ const catsData = [
     "badge": "現在募集なし",
     "tags": [],
     "description": "保護部屋：詳細追加待ち",
-    "image": "images/cats/nan.jpg"
+    "image": "images/cats/reon.jpg"
   },
   {
     "name": "いちご",
@@ -807,7 +807,7 @@ const catsData = [
     "badge": "挑戦者待ち",
     "tags": [],
     "description": "保護部屋：おてんば娘、元気いっぱいでご飯大好き、姉妹または3匹一緒希望、うっすら白血病陽性の為、要相談",
-    "image": "images/cats/nan.jpg"
+    "image": "images/cats/peach.jpg"
   },
   {
     "name": "グレープ",
@@ -819,7 +819,7 @@ const catsData = [
     "badge": "挑戦者待ち",
     "tags": [],
     "description": "保護部屋：甘えん坊で抱っこ大好き、うっすら白血病陽性の為、要相談",
-    "image": "images/cats/nan.jpg"
+    "image": "images/cats/grape.jpg"
   },
   {
     "name": "チェリー",
