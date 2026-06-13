@@ -1006,3 +1006,98 @@ footer {
   }
 }
 /* End mobile-only header SNS and quick navigation */
+
+
+/* Final mobile header adjustment: put menu button with fixed quick links */
+@media (max-width: 760px) {
+  .topbar .container.nav {
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-height: 66px;
+    column-gap: 8px;
+  }
+
+  .topbar .brand {
+    grid-column: 1;
+    font-size: clamp(1.02rem, 4.3vw, 1.14rem);
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  .topbar .brand-mark {
+    width: 42px;
+    height: 42px;
+  }
+
+  .topbar .mobile-social {
+    grid-column: 2;
+  }
+
+  .topbar .menu-toggle {
+    grid-column: auto;
+    grid-row: auto;
+    width: 46px;
+    height: 46px;
+    border-radius: 16px;
+    flex: 0 0 46px;
+  }
+
+  .mobile-quick-nav {
+    grid-template-columns: 54px repeat(3, minmax(0, 1fr));
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 10px;
+  }
+
+  .mobile-quick-nav .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: stretch;
+    width: 100%;
+    height: 46px;
+    padding: 0;
+    border: 0;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--primary), #ffb9a8);
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(232, 129, 111, 0.24);
+    font-size: 1.18rem;
+    font-weight: 800;
+  }
+
+  .topbar .nav-links {
+    top: calc(100% + 58px);
+  }
+
+  .mobile-quick-nav a {
+    min-height: 46px;
+    font-size: clamp(0.78rem, 3.25vw, 0.94rem);
+  }
+}
+
+@media (max-width: 380px) {
+  .topbar .brand {
+    font-size: 0.98rem;
+    gap: 6px;
+  }
+
+  .topbar .brand-mark {
+    width: 38px;
+    height: 38px;
+  }
+
+  .mobile-quick-nav {
+    grid-template-columns: 48px repeat(3, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .mobile-quick-nav .menu-toggle {
+    height: 42px;
+    border-radius: 14px;
+  }
+
+  .mobile-quick-nav a {
+    min-height: 42px;
+    padding-inline: 4px;
+  }
+}
