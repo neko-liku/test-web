@@ -1101,3 +1101,67 @@ footer {
     padding-inline: 4px;
   }
 }
+
+/* Mobile quick navigation final adjustment: keep hamburger + three buttons on one horizontal row */
+@media (max-width: 760px) {
+  .mobile-quick-nav {
+    display: flex !important;
+    align-items: center;
+    gap: 6px;
+    width: min(calc(100% - 20px), var(--max));
+    margin: 0 auto 10px;
+    padding: 0 0 2px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .mobile-quick-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-quick-nav .menu-toggle {
+    flex: 0 0 46px;
+    width: 46px;
+    height: 44px;
+    border-radius: 15px;
+  }
+
+  .mobile-quick-nav a {
+    flex: 1 0 98px;
+    min-width: 98px;
+    min-height: 44px;
+    padding: 7px 8px;
+    font-size: clamp(0.78rem, 3.25vw, 0.9rem);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .topbar .nav-links {
+    top: calc(100% + 56px);
+  }
+}
+
+@media (max-width: 380px) {
+  .mobile-quick-nav {
+    gap: 5px;
+    width: min(calc(100% - 16px), var(--max));
+  }
+
+  .mobile-quick-nav .menu-toggle {
+    flex-basis: 42px;
+    width: 42px;
+    height: 41px;
+    border-radius: 14px;
+  }
+
+  .mobile-quick-nav a {
+    flex-basis: 92px;
+    min-width: 92px;
+    min-height: 41px;
+    padding: 6px 7px;
+    font-size: 0.78rem;
+  }
+}
