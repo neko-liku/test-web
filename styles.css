@@ -849,3 +849,152 @@ footer {
     text-overflow: ellipsis;
   }
 }
+
+/* Mobile header update: hamburger on the left, SNS on the right, and fixed main links */
+.header-social {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 8px;
+  border: 2px solid var(--primary-dark);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #111;
+  font-size: 1.05rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.mobile-menu-row {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    background: rgba(255, 250, 247, 0.96);
+  }
+
+  .nav {
+    min-height: 72px;
+    gap: 10px;
+    position: relative;
+  }
+
+  .brand {
+    gap: 10px;
+    font-size: 1.2rem;
+    min-width: 0;
+  }
+
+  .brand span:last-child {
+    white-space: nowrap;
+  }
+
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+  }
+
+  .nav-actions {
+    margin-left: auto;
+    gap: 0;
+  }
+
+  .header-social {
+    display: flex;
+  }
+
+  .header-social a {
+    min-width: 40px;
+    height: 40px;
+    font-size: 0.95rem;
+  }
+
+  .mobile-menu-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 10px;
+    padding-bottom: 12px;
+    border-top: 1px solid rgba(241, 221, 210, 0.8);
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    color: #1594ff;
+    background: var(--card);
+    box-shadow: var(--shadow);
+  }
+
+  .mobile-quick-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .mobile-quick-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    color: #111;
+    font-size: clamp(1rem, 4vw, 1.25rem);
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .nav-links {
+    left: 10px;
+    right: 10px;
+    top: calc(100% + 66px);
+    z-index: 80;
+  }
+
+  .section:first-child,
+  .hero:first-child {
+    padding-top: 28px;
+  }
+}
+
+@media (max-width: 390px) {
+  .brand {
+    font-size: 1.05rem;
+  }
+
+  .header-social {
+    gap: 5px;
+  }
+
+  .header-social a {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 6px;
+    font-size: 0.85rem;
+  }
+
+  .mobile-menu-row {
+    gap: 8px;
+  }
+
+  .mobile-quick-nav {
+    gap: 6px;
+  }
+}
